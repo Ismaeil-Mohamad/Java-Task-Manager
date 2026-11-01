@@ -80,15 +80,16 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", status=" + status +
-                ", priority=" + priority +
-                ", createAt=" + createAt +
-                ", dueDate=" + dueDate +
-                '}';
+
+        return "\nTask ID: " + id +
+                "\nTitle: " + title +
+                "\nDescription: " + description +
+                "\nStatus: " + status +
+                "\nPriority: " + priority +
+                "\nCreated At: " + createAt +
+                "\nDue Date: " + dueDate +
+                "\n--------------------------------";
+
     }
 
 
