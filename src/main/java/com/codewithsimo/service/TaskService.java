@@ -5,9 +5,7 @@ import com.codewithsimo.enums.TaskStatus;
 import com.codewithsimo.model.Task;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class TaskService {
     private final List<Task> tasks;
@@ -94,6 +92,54 @@ public class TaskService {
         return tasks.stream()
                 .filter(task -> task.getPriority() == priority)
                 .toList();
+    }
+
+    public List<Task> searchTasksByTitle(String title) {
+
+        return tasks.stream()
+                .filter(task ->
+                        task.getTitle()
+                                .toLowerCase()
+                                .contains(title.toLowerCase())
+                )
+                .toList();
+    }
+
+    public List<Task> sortTasksByPriority() {
+
+        return tasks.stream()
+                .sorted(
+                        Comparator.comparingInt(
+                                (Task task) -> task.getPriority().ordinal()
+                        ).reversed()
+                )
+                .toList();
+    }
+
+    public List<Task> sortTasksByDueDate() {
+
+        return tasks.stream()
+                .sorted(
+                        Comparator.comparing(Task::getDueDate)
+                )
+                .toList();
+    }
+
+    public Map<TaskStatus, Long> getTaskStatistics() {
+
+        Map<TaskStatus, Long> statistics =
+                new EnumMap<>(TaskStatus.class);
+
+        for (TaskStatus status : TaskStatus.values()) {
+
+            long count = tasks.stream()
+                    .filter(task -> task.getStatus() == status)
+                    .count();
+
+            statistics.put(status, count);
+        }
+
+        return statistics;
     }
 
 

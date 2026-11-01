@@ -382,7 +382,7 @@ public class TaskMenu {
                 System.out.println((i + 1) + ". " + priorities[i]);
             }
 
-            int choice = readTitle("Enter priority number: ");
+            int choice = readInt("Enter priority number: ");
 
             if (choice >= 1 && choice <= priorities.length) {
 
@@ -421,4 +421,4 @@ public class TaskMenu {
     }
 
 }
-}
+
