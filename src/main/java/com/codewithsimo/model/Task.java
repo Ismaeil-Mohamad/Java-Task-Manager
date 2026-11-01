@@ -22,7 +22,7 @@ public class Task {
         this.dueDate = dueDate;
 
         this.status = TaskStatus.TODO;
-        this.createAt=LocalDate.now();
+        this.createAt = LocalDate.now();
 
     }
 
